@@ -22,3 +22,5 @@ go.work
 
 pocketbase
 pb_data
+
+node_modules
