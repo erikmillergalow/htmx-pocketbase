@@ -1,0 +1,25 @@
+{
+  "name": "htmx-pocketbase",
+  "version": "1.0.0",
+  "description": "Run: go run main.go serve Build: CGO_ENABLED=0 go build Run built package: ./myapp serve",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss build -o pb_public/main.css --minify",
+    "watch": "tailwindcss build -o pb_public/tailwind.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikmillergalow/htmx-pocketbase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erikmillergalow/htmx-pocketbase/issues"
+  },
+  "homepage": "https://github.com/erikmillergalow/htmx-pocketbase#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

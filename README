@@ -1,0 +1,7 @@
+Run: go run main.go serve
+Build: CGO_ENABLED=0 go build
+Run built package: ./myapp serve
+
+Run with live reload using air: air
+
+Live Tailwind reload: tailwindcss build -o static/css/tailwind.css --watch
