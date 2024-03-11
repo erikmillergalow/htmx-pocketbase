@@ -24,3 +24,6 @@ pocketbase
 pb_data
 
 node_modules
+
+# templ generated files
+**/*._templ.go
