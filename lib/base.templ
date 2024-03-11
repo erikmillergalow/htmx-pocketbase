@@ -1,0 +1,18 @@
+package lib
+
+templ BaseLayout() {
+    <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+            <meta name="viewport" content="width=device-width" />
+            <link rel="stylesheet" href="/pb_public/tailwind.css" />
+
+            <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+            <title>PB</title>
+        </head>
+        <body class="">
+            { children... }
+        </body>
+    </html>
+}

@@ -1,12 +1,12 @@
 package components
 
-templ Index(name string) {
+templ Index() {
 	@DocType()
 	@Head()
-	@Body(pageIndex(name))
+	@Body(pageIndex())
 }
 
-templ pageIndex(name string) {
-	<p>Hello { name }!</p>
+templ pageIndex() {
+	<p>Hello!</p>
 	<p>This is a website running on Pocketbase!</p>
 }

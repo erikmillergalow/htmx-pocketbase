@@ -1,0 +1,15 @@
+package app
+
+import (
+	"erikmillergalow/htmx-pocketbase/lib"
+)
+
+templ Dashboard() {
+	@lib.BaseLayout() {
+		<h1>Dashboard</h1>
+
+		<form method="POST" action="/auth/logout" hx-boost="true">
+			<button type="submit">Sign Out</button>
+		</form>
+	}
+}

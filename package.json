@@ -21,5 +21,8 @@
   "homepage": "https://github.com/erikmillergalow/htmx-pocketbase#readme",
   "devDependencies": {
     "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "pocketbase": "^0.21.1"
   }
 }

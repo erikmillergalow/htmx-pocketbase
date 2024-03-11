@@ -1,0 +1,44 @@
+package auth
+
+import (
+	"erikmillergalow/htmx-pocketbase/lib"
+)
+
+templ SignUpForm(form SignUpFormValue, err error) {
+    @lib.BaseLayout() {
+        <div class="bg-gradient-to-r from-neutral-500 to-indigo-500 flex flex-col h-screen items-center w-screen">
+            <form method="POST" action="/auth/sign-up" hx-boost="true" enctype="multipart/form-data">
+                <div class="drop-shadow-xl rounded-xl mt-8 pb-16 px-8 max-w-xl flex flex-col items-center bg-gradient-to-r from-indigo-500 to-neutral-500">
+                    <div class="my-16">
+                        <img class="rounded-md" src="assets/signature.png" alt="logo" />
+                    </div>
+                    <h1 class="font-poppins font-thin text-indigo-950 text-3xl font-bold mb-8">Sign Up</h1>
+                    
+                    <div class="flex flex-col mt-8 w-full">
+                        <label class="font-oswald-100 pl-2 text-indigo-950" for="username"><b>Email</b></label>
+                        <input class="font-oswald-100 focus:ring-indigo-800 text-indigo-900 placeholder:text-indigo-300 mt-1 w-full py-1 rounded-md pl-2" type="username" placeholder="Enter email" name="username" required />
+                    </div>
+
+                    <div class="flex flex-col mt-6 w-full">
+                        <label class="font-oswald-100 text-indigo-950 pl-2" for="password"><b>Password</b></label>
+                        <input class="font-oswald-100 focus:ring-indigo-800 text-indigo-900 placeholder:text-indigo-300 mt-1 w-full py-1 rounded-md pl-2" type="password" placeholder="Enter password" name="password" required />
+                    </div>
+
+					<div class="flex flex-col mt-6 w-full">
+						<label class="font-oswald-100 text-indigo-950 pl-2" for="passwordConfrim"><b>Confirm password</b></label>
+						<input class="font-oswald-100 focus:ring-indigo-800 text-indigo-900 placeholder:text-indigo-300 mt-1 w-full py-1 rounded-md pl-2" type="password" placeholder="Re-enter password" name="passwordConfirm" required />
+					</div>
+
+                    if err != nil {
+                        <p>{err.Error()}</p>
+                    }
+
+                    <button type="submit" class="font-oswald-100 text-indigo-950 mt-16 bg-indigo-300 hover:bg-indigo-600 rounded-md w-full py-1">
+                        Sign Up
+                    </button>
+                </div>    
+            </form>
+        </div>
+
+    }
+}
