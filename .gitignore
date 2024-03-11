@@ -26,4 +26,4 @@ pb_data
 node_modules
 
 # templ generated files
-**/*._templ.go
+**/*_templ.go
