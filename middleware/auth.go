@@ -24,7 +24,7 @@ func LoadAuthContextFromCookie(app core.App) echo.MiddlewareFunc {
 			}
 
 			token := tokenCookie.Value
-			
+
 			claims, err := security.ParseUnverifiedJWT(token)
 			if err != nil {
 				return next(c)
@@ -34,27 +34,27 @@ func LoadAuthContextFromCookie(app core.App) echo.MiddlewareFunc {
 
 			switch tokenType {
 			case tokens.TypeAdmin:
-					admin, err := app.Dao().FindAdminByToken(
-						token,
-						app.Settings().AdminAuthToken.Secret,
-					)
-					if err == nil && admin != nil {
-						fmt.Println("Setting admin by cookie")
-						// set the cookie to authenticate the admin user
-						c.Set(apis.ContextAdminKey, admin)
-					}
+				admin, err := app.Dao().FindAdminByToken(
+					token,
+					app.Settings().AdminAuthToken.Secret,
+				)
+				if err == nil && admin != nil {
+					fmt.Println("Setting admin by cookie")
+					// set the cookie to authenticate the admin user
+					c.Set(apis.ContextAdminKey, admin)
+				}
 			case tokens.TypeAuthRecord:
-					record, err := app.Dao().FindAuthRecordByToken(
-						token,
-						app.Settings().RecordAuthToken.Secret,
-					)
-					if err == nil && record != nil {
-						fmt.Println("Setting user by cookie")
-						// set cookie to authenticate normal user
-						c.Set(apis.ContextAuthRecordKey, record)
-					}
+				record, err := app.Dao().FindAuthRecordByToken(
+					token,
+					app.Settings().RecordAuthToken.Secret,
+				)
+				if err == nil && record != nil {
+					fmt.Println("Setting user by cookie")
+					// set cookie to authenticate normal user
+					c.Set(apis.ContextAuthRecordKey, record)
+				}
 			}
-			
+
 			return next(c)
 
 		}
@@ -66,7 +66,7 @@ func AuthGuard(next echo.HandlerFunc) echo.HandlerFunc {
 		record := c.Get(apis.ContextAuthRecordKey)
 
 		if record == nil {
-			return c.Redirect(302, "auth/sign-in")
+			return c.Redirect(302, "/auth/sign-in")
 		}
 
 		return next(c)

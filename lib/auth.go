@@ -5,12 +5,10 @@ import (
 
 	"github.com/labstack/echo/v5"
 
-	// "github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
-	"github.com/pocketbase/pocketbase/tokens"
-	"github.com/pocketbase/pocketbase/models"
 	"github.com/pocketbase/pocketbase/forms"
-	// "github.com/pocketbase/pocketbase/apis"
+	"github.com/pocketbase/pocketbase/models"
+	"github.com/pocketbase/pocketbase/tokens"
 )
 
 func Login(e *core.ServeEvent, username string, password string) (*string, error) {
@@ -45,12 +43,9 @@ func SignUp(e *core.ServeEvent, c echo.Context, username string, password string
 		return nil, fmt.Errorf("Failed to find user collection")
 	}
 	newUser := models.NewRecord(usersCollection)
-	// newUser.username = username
-	// newUser.password = password
-	// newUser.passwordConfirm = passwordConfirm
 	form := forms.NewRecordUpsert(e.App, newUser)
 
-	// Must use `enctype="multipart/form-data"` on form!
+	// must use `enctype="multipart/form-data"` on form
 	form.LoadRequest(c.Request(), "")
 	fmt.Println(form)
 	if err := form.Submit(); err != nil {
@@ -59,7 +54,6 @@ func SignUp(e *core.ServeEvent, c echo.Context, username string, password string
 		return nil, fmt.Errorf("Submit form failed")
 	}
 
-	
 	user, err := e.App.Dao().FindAuthRecordByUsername("users", username)
 	if err != nil {
 		fmt.Println("Sign up failed")
